@@ -152,7 +152,7 @@ body {
 }
 
 
-@media screen and (max-width: 768px) {
+/*@media screen and (max-width: 768px) {
   .card {
     width: 95vw;
     height: auto;
@@ -200,5 +200,4 @@ body {
   .cake {
     transform: scale(0.8);
   }
-}
-
+}*/
