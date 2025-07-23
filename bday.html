@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Card</title>
+    <!-- Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio id="openSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_bf90dc6a7d.mp3"></audio>
+    <div class="card">
+      <div class="outside">
+        <div class="front">
+          <p>Happy Birthday Bristi ❤️&#10084;&#65039;</p>
+          <div class="cake">
+            <div class="top-layer"></div>
+            <div class="middle-layer"></div>
+            <div class="bottom-layer"></div>
+            <div class="candle"></div>
+          </div>
+        </div>
+        <div class="back"></div>
+      </div>
+      <div class="inside">
+        <p style="text-align: justify;">Happy Birthday, <b>Bristi</b>.<br></p>
+        <p style="text-align: justify;">On this day, the world was blessed with your smile — and one day, I was lucky enough to fall for it.
+        You mean more to me than words can ever say, but today, I just want you to know:
+        "I’m so glad you exist, and I’m even more grateful that you exist as <b>My World</b>." 💫❤️</p>
+        <p>From your dear, <b>Babai</b>!&#128053;</p>
+        <h1>&#127873;</h1>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+      const card = document.querySelector(".card");
+      const sound = document.getElementById("openSound");
+
+      card.addEventListener("click", function () {
+        this.classList.toggle("open");
+
+        if (this.classList.contains("open")) {
+          sound.currentTime = 0;
+          sound.play();
+          launchConfetti();
+        }
+      });
+
+      function launchConfetti() {
+        const duration = 2 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 25, spread: 360, ticks: 60, zIndex: 999 };
+
+        function randomInRange(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function () {
+          const timeLeft = animationEnd - Date.now();
+
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+
+          const particleCount = 50 * (timeLeft / duration);
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+          });
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+          });
+        }, 250);
+      }
+    </script>
+  </body>
+</html>

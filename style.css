@@ -1,3 +1,4 @@
+
 * {
   padding: 0;
   margin: 0;
@@ -5,7 +6,14 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: #fdbf00;
+  margin: 0;
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 .card {
   width: 640px;
@@ -16,14 +24,10 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  -webkit-perspective: 1200px;
   perspective: 1200px;
   transition: 1s;
 }
-.card:hover {
-  transform: rotate(-5deg);
-}
-.card:hover .outside {
+.card.open .outside {
   transform: rotateY(-130deg);
 }
 .outside,
@@ -36,7 +40,7 @@ body {
 .inside {
   background: linear-gradient(to right, #e7e7e7, #ffffff 30%);
   line-height: 1.5;
-  padding: 0 20px;
+  padding: 10px 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -45,7 +49,6 @@ body {
   left: 50%;
 }
 .outside {
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   z-index: 1;
   transform-origin: left;
@@ -57,9 +60,7 @@ body {
   height: 100%;
   width: 100%;
   position: absolute;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  transform: rotateX(0deg);
 }
 .front {
   background-color: #ffffff;
@@ -126,6 +127,7 @@ body {
   bottom: 48px;
   transform: rotate(45deg);
   left: -1px;
+  animation: flicker 1s infinite;
 }
 .outside p {
   font-size: 23px;
@@ -138,4 +140,13 @@ body {
 .inside h1 {
   font-size: 120px;
   line-height: 120px;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; transform: rotate(0deg) scale(1); }
+  20% { opacity: 0.8; transform: rotate(2deg) scale(1.05); }
+  40% { opacity: 0.9; transform: rotate(-2deg) scale(0.95); }
+  60% { opacity: 1; transform: rotate(1deg) scale(1.1); }
+  80% { opacity: 0.85; transform: rotate(-1deg) scale(0.98); }
+  100% { opacity: 1; transform: rotate(0deg) scale(1); }
 }

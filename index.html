@@ -1,35 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Birthday Card</title>
-    <!-- Google Font-->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="card">
-      <div class="outside">
-        <div class="front">
-          <p>Happy Birthday Bristi ❤️&#10084;&#65039;</p>
-          <div class="cake">
-            <div class="top-layer"></div>
-            <div class="middle-layer"></div>
-            <div class="bottom-layer"></div>
-            <div class="candle"></div>
-          </div>
-        </div>
-        <div class="back"></div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Birthday Card</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card-container {
+      perspective: 1500px;
+    }
+
+    .card {
+      width: 300px;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card.is-open {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .front {
+      background: #ffe3e3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .front h2 {
+      font-size: 1.8em;
+      color: #ff4d6d;
+    }
+
+    .front .emoji {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .back {
+      background: white;
+      transform: rotateY(180deg);
+      padding: 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .back h1 {
+      color: #ff6b81;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .back p {
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .back .footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container" onclick="toggleCard()">
+    <div class="card" id="birthdayCard">
+      <div class="card-face front">
+        <div class="emoji">🎉🎈</div>
+        <h2>Click to Open!</h2>
       </div>
-      <div class="inside">
-        <p>Wishing you a very happy birthday, Bristi. Always stay this much adorable and cheerful, because that's what suits you the most, QT.</p>
-		    <p>From your dear, Babai!&#128053;</p>
-        <h1>&#127873;</h1>
+      <div class="card-face back">
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you joy, love, and endless laughter on your special day. 💖</p>
+        <div class="footer">– From Someone To Whom You Mean Everything 🎂<br><br>
+        <a href="bday.html" style="color: #ff6b81; text-decoration: none; font-weight: bold;">
+      Click here for a surprise! 🎁
+    </a>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+
+  <script>
+    function toggleCard() {
+      document.getElementById('birthdayCard').classList.toggle('is-open');
+    }
+  </script>
+</body>
 </html>
