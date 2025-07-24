@@ -150,3 +150,20 @@ body {
   80% { opacity: 0.85; transform: rotate(-1deg) scale(0.98); }
   100% { opacity: 1; transform: rotate(0deg) scale(1); }
 }
+
+/* Sparkle */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px #fff;
+  animation: twinkle 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 999;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
