@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="sparkles"></div>
     <audio id="openSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_bf90dc6a7d.mp3"></audio>
     <div class="card">
       <div class="outside">
@@ -35,7 +36,29 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js">
+      // 🎊 Confetti Loop Mode
+      setInterval(() => {
+        confetti({
+          particleCount: 6,
+          angle: 90,
+          spread: 80,
+          origin: { y: 0 },
+          ticks: 200
+        });
+      }, 600);
+
+      // ✨ Sparkles
+      const sparkleContainer = document.getElementById("sparkles");
+      for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.animationDelay = Math.random() * 3 + "s";
+        sparkleContainer.appendChild(sparkle);
+      }
+    </script>
     <script>
       const card = document.querySelector(".card");
       const sound = document.getElementById("openSound");
@@ -79,7 +102,7 @@
           });
         }, 250);
       }
-      
+    
       // 🎊 Confetti Loop Mode
       setInterval(() => {
         confetti({
@@ -101,7 +124,6 @@
         sparkle.style.animationDelay = Math.random() * 3 + "s";
         sparkleContainer.appendChild(sparkle);
       }
-
     </script>
   </body>
 </html>
